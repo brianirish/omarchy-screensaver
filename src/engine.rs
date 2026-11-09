@@ -183,9 +183,10 @@ fn pick_effect(
             if !include.is_empty() {
                 names.retain(|name| include.contains(name));
             } else {
-                // Configured effects are a preference, not a command: names this
-                // ttfx doesn't have are skipped, and if none are left the pick
-                // stays open rather than leaving no screensaver.
+                // Configured effects are a preference, and the command line
+                // wins: --exclude-effects has already applied, and names this
+                // ttfx doesn't have are skipped. If no configured effect is
+                // left, the pick stays open rather than leaving no screensaver.
                 let mut preferred = names.clone();
                 preferred.retain(|name| configured.contains(name));
                 if !preferred.is_empty() {

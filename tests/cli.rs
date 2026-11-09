@@ -155,6 +155,18 @@ fn command_line_effects_override_shell_json() {
 }
 
 #[test]
+fn excluding_every_shell_json_effect_still_starts() {
+    for seed in ["1", "2", "3", "4", "5"] {
+        let effect = effect_picked_with_shell_json(
+            &format!("exclude-all-{seed}"),
+            r#"{"screensaver": {"effects": ["print"]}}"#,
+            &["--exclude-effects", "print", "--seed", seed],
+        );
+        assert_ne!(effect, "print");
+    }
+}
+
+#[test]
 fn excluded_effects_win_over_shell_json() {
     let effect = effect_picked_with_shell_json(
         "exclude",

@@ -213,8 +213,9 @@ Input file default: ~/.config/omarchy/branding/screensaver.txt
 then the bundled assets/screensaver.txt.
 
 Effects: the random pick is limited to "screensaver": {{"effects": [...]}} in
-~/.config/omarchy/shell.json when set, skipping names ttfx doesn't have.
---effect and --include-effects override it.
+~/.config/omarchy/shell.json when set. --effect and --include-effects
+override it and --exclude-effects applies first; names ttfx doesn't have are
+skipped, and if no listed effect is left, every effect is in the pick.
 "#
     );
 }
